@@ -1,0 +1,120 @@
+class Person {
+  constructor(name, pets, residence, hobbies) {
+    this.name = name;
+    this.pets = pets;
+    this.residence = residence;
+    this.hobbies = hobbies || [];
+  }
+
+  addHobby(newHobby) {
+    this.hobbies.push(newHobby);
+  }
+
+  removeHobby(hobbyToRemove) {
+    this.hobbies = this.hobbies.filter(hobby => hobby !== hobbyToRemove);
+  }
+
+  greeting() {
+    console.log("Hello fellow person!");
+  }
+
+  info() {
+    console.log(`Name: ${this.name}`);
+    console.log(`Pets: ${this.pets}`);
+    console.log(`Residence: ${this.residence}`);
+    console.log(`Hobbies: ${this.hobbies.join(", ")}`);
+  }
+
+  soundOff() {
+    console.log("I am a person!");
+  }
+}
+
+// Example usage:
+const person1 = new Person("John", 2, "City", ["Reading", "Traveling"]);
+person1.info();
+person1.addHobby("Cooking");
+person1.removeHobby("Reading");
+person1.greeting();
+person1.soundOff();
+
+class Coder extends Person {
+    constructor(name, pets, residence, hobbies) {
+      super(name, pets, residence, hobbies);
+      this.occupation = "Full Stack Web Developer";
+    }
+  
+    greeting() {
+      console.log(`Hello fellow coder! My name is ${this.name} and I'm a ${this.occupation}.`);
+    }
+  }
+  
+  // Example usage:
+  const coder1 = new Coder("Alice", 1, "Suburb", ["Coding", "Gaming"]);
+  coder1.info(); // Inherited method from Person class
+  coder1.greeting(); // Overridden method in Coder class
+  coder1.soundOff(); // Inherited method from Person class
+
+  // Create a Person object
+const personInstance = new Person("Jane", 0, "Apartment", ["Reading", "Painting"]);
+personInstance.info(); // Call the inherited method from Person class
+personInstance.greeting(); // Call the method from Person class
+personInstance.soundOff(); // Call the inherited method from Person class
+
+console.log("----------------------");
+
+// Create a Coder object
+const coderInstance = new Coder("Bob", 2, "City", ["Coding", "Gaming"]);
+coderInstance.info(); // Call the inherited method from Person class
+coderInstance.greeting(); // Call the overridden method in Coder class
+coderInstance.soundOff(); // Call the inherited method from Person class
+
+class Calculator {
+    constructor() {
+      this.result = 0;
+    }
+  
+    add(a, b = 0) {
+      this.result = a + b;
+      return this.result;
+    }
+  
+    subtract(a, b = 0) {
+      this.result = a - b;
+      return this.result;
+    }
+  
+    multiply(a, b = 1) {
+      this.result = a * b;
+      return this.result;
+    }
+  
+    divide(a, b = 1) {
+      if (b === 0) {
+        console.error("Cannot divide by zero!");
+        return;
+      }
+  
+      this.result = a / b;
+      return this.result;
+    }
+  
+    displayResult() {
+      console.log(`Result: ${this.result}`);
+    }
+  }
+  
+  // Example usage:
+  const calculator = new Calculator();
+  calculator.add(5, 3);
+  calculator.displayResult(); // Output: Result: 8
+  
+  calculator.subtract(10, 3);
+  calculator.displayResult(); // Output: Result: 7
+  
+  calculator.multiply(4);
+  calculator.displayResult(); // Output: Result: 28
+  
+  calculator.divide(20, 2);
+  calculator.displayResult(); // Output: Result: 10
+  
